@@ -28,15 +28,17 @@ jobs:
       - run: npm ci
       - run: npm test
   coverage:
-    - uses: actions/checkout@v5
-    - name: Setup Node
-      uses: actions/setup-node@v4
-      with:
-        cache: "npm"
-    - run: npm ci
-    - run: npm run test -- --coverage
-    - uses: actions/upload-artifact@v3
-      name: Archive coverage report
-      with:
-        path: coverage
-        name: coverage-report
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          cache: "npm"
+      - run: npm ci
+      - run: npm run test -- --coverage
+      - uses: actions/upload-artifact@v3
+        name: Archive coverage report
+        with:
+          path: coverage
+          name: coverage-report
