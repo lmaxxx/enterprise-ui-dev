@@ -3,8 +3,10 @@ import { PackingList } from '.';
 import { Provider } from 'react-redux';
 import { createStore } from '@/examples/packing-list-revisited/store';
 import {PropsWithChildren, ReactElement} from 'react';
+import {RenderOptions} from "@testing-library/react";
 
-const render = (Component, options) => {
+
+const render = (Component: ReactElement, options?: RenderOptions) => {
   const store = createStore();
 
   const Wrapper = ({children}: PropsWithChildren) => <Provider store={store}>{children}</Provider>
